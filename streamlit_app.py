@@ -40,7 +40,7 @@ try:
     streamlit.error()
 #streamlit.write('The user entered ', fruit_choice)
 
-# requirements.txt
+# requirements.txt abc
 
 streamlit.stop()
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
