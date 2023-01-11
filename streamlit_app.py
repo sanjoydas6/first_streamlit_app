@@ -28,16 +28,23 @@ streamlit.text(fruityvice_response.json())
 
 # Parses in Pandas
 
+#create a repeatable code block (called function)
+def get_fruityvice_data(this_fruit_choice):
+  fruityvice_response = requests.get("https://fruityvice.com/api/fruit" + this_fruit_choice)
+  fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+  return fruityvice_normalized
+#New Section to display fruityvice api response
 try:
   fruit_choice = streamlit.text_input('What fruit would you like information about?')
   if not fruit_choice:
     streamlit.error("Please select a ftuit to get the information")
   else:
-    fruityvice_response = requests.get("https://fruityvice.com/api/fruit" + fruit_choice)
-    fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
-    streamlit.dataframe(fruityvice_normalized)
+    back_from_function = get_frutyvice_data(fruit_choice)
+    streamlit.dataframe(back_from_function)
 except URLError as e:
   streamlit.error()
+  
+
     
 #streamlit.write('The user entered ', fruit_choice)
 
