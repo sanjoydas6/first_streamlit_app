@@ -42,7 +42,7 @@ try:
   fruit_choice = streamlit.text_input('What fruit would you like information about?')
   #fruit_choice = "kiwi"
   if not fruit_choice:
-    streamlit.error("Please select a ftuit to get the information")
+    streamlit.error("Please select a fruit to get the information")
   else:
     back_from_function = get_fruityvice_data(fruit_choice)
     streamlit.dataframe(back_from_function)
@@ -57,7 +57,7 @@ except URLError as e:
 
 #streamlit.stop()
 
-my_cur = my_cnx.cursor()
+#my_cur = my_cnx.cursor()
 #my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
 my_cur.execute("SELECT * FROM fruit_load_list")
 my_data_rows = my_cur.fetchall()
